@@ -4,8 +4,21 @@ from PIL import Image
 import io
 from backend.model import predict
 from backend.risk import evaluate_risk
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
+import os
 
 app = FastAPI(title="Sistema de Vigilancia Entomológica")
+
+# Montar la carpeta estática para poder servir el index.html
+static_path = os.path.join(os.path.dirname(__file__), "static")
+if os.path.exists(static_path):
+    app.mount("/static", StaticFiles(directory=static_path), name="static")
+
+@app.get("/")
+def read_root():
+    # Cuando abran el link principal, los redirige automáticamente a la página
+    return RedirectResponse(url="/static/index.html")
 
 app.add_middleware(
     CORSMiddleware,

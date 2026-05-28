@@ -99,7 +99,8 @@
             formData.append('file', document.getElementById('imagenIndividual').files[0]);
             
             try {
-                const res = await fetch('http://localhost:8000/predict', {method: 'POST', body: formData});
+                // Usamos ruta relativa para que funcione tanto en localhost como en la Nube de Render
+                const res = await fetch('/predict', {method: 'POST', body: formData});
                 const d = await res.json();
                 
                 if(!res.ok) { alert(d.detail || 'Error en el modelo'); return; }
@@ -137,7 +138,8 @@
             }
             
             try {
-                const res = await fetch('http://localhost:8000/predict-lote', {method: 'POST', body: formData});
+                // Usamos ruta relativa para que funcione tanto en localhost como en la Nube de Render
+                const res = await fetch('/predict-lote', {method: 'POST', body: formData});
                 const d = await res.json();
                 
                 if(!res.ok) { alert(d.detail || 'Error en el modelo'); return; }
