@@ -1,0 +1,22 @@
+# Entornos de Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# Carpetas de datos (demasiado pesadas para GitHub/Despliegue)
+data/
+proyecto/
+
+# Archivos de MLflow y Notebooks intermedios
+mlruns/
+mlflow.db
+laboratorio_2.ipynb
+
+# Modelos no usados (solo subimos el ganador)
+cnn_base.pth
+svm_hog.pkl
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
